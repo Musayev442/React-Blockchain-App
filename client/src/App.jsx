@@ -10,7 +10,6 @@ const App = () =>
       </div>
       <Services/>
       <Transaction/>
-      <Loader/>
       <Footer/>
     </div>
   )

@@ -5,6 +5,18 @@ import {BsInfoCircle} from 'react-icons/bs';
 import {Loader} from './';
 
 const commonStyles ='min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white';
+const Input = ({placeholder,name,type,value,handleChange})=><input 
+type={type}
+name={name}
+value={value}
+placeholder={placeholder} 
+handleChange={handleChange}
+className='my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism'
+/>;
+
+const handleChange = ()=>{}
+
+
 
 const Welcome = ()=>
 {
@@ -13,9 +25,14 @@ const Welcome = ()=>
 
  }
 
+ const handleSubmit = ()=>
+ {
+
+ }
+
  return (
    <div className='w-full flex justify-center items-center'>
-     <div className='flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4'>
+     <div className='flex mf:flex-row flex-col items-start justify-between mf:p-20 py-12 px-4'>
        <div className='flex flex-1 justify-start flex-col md:mr-10'>
          <h1 className='text-3xl sm:text-5xl text-white text-gradient py-1'>
            Send crypto <br />
@@ -41,7 +58,7 @@ const Welcome = ()=>
            <div className={`rounded-br-2xl ${commonStyles}`}>Blockchain</div>
          </div>
        </div>
-       <div className='flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10'>
+       <div className='flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10'>
          <div className='p-3 justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorphisime'>
            <div className='flex justify-between flex-col w-full h-full'>
              <div className='flex justify-between items-start'>
@@ -60,10 +77,28 @@ const Welcome = ()=>
              </div>
            </div>
          </div>
+         <div className='p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism'>
+           <Input type='text' name='address_to' placeholder='Address to' handleChange={handleChange}/>
+           <Input type='number' name='amount' placeholder='Amount (ETH)' handleChange={handleChange}/>
+           <Input type='text' name='keyword' placeholder='Keyword (Gif)' handleChange={handleChange}/>
+           <Input type='text' name='message' placeholder='Enter message' handleChange={handleChange}/>
+           <hr className='w-full bg-gray-400 my-2'/>
+           {
+             true
+             ?(<Loader />)
+             :(
+              <button 
+              type='button' 
+              onClick={handleSubmit}
+              className='text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] rounded-full cursor-pointere'
+              >Send Now</button>
+              )
+           }
+          </div>        
        </div>
      </div>
    </div>
- )
+ );
 }
 
 export default Welcome;
